@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Upload PDF</h2>
+
+@* <form class="form-container" asp-controller="SautinSoft" asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file" class="control-label">Select PDF file:</label>
+        <input type="file" id="pdfFile" name="pdfFile" class="fileInput" />
+    </div>
+    <div class="form-group">
+        <label for="filename" class="control-label">Signed PDF name:</label>
+        <input type="text" id="newFileName" name="newFileName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="certificateFile" class="control-label">Select PFX Certificate File:</label>
+        <input type="file" id="certificateFile" name="certificateFile" class="fileInput" />
+    </div>
+    <div class="form-group">
+        <label for="certPassword" class="control-label">Certificate Password:</label>
+        <input type="password" id="certPassword" name="certPassword" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="signatureFile" class="control-label">Select PNG Signature File:</label>
+        <input type="file" id="signatureFile" name="signatureFile" class="fileInput" />
+    </div>
+    <button type="submit" class="uploadButton">Upload</button>
+</form>
+ *@
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
