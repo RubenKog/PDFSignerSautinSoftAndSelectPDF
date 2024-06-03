@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PDFSigner.Models;
 using PDFSigner.Services;
-using System.Diagnostics;
 using System.Text;
 
 namespace PDFSigner.Controllers;
-public class SautinSoftController : Controller
+public class SelectPDFController : Controller
 {
-    private readonly ISautinSoftService _softService;
-    public SautinSoftController(ISautinSoftService softService)
+    private readonly ISelectPDFService _softService;
+    public SelectPDFController(ISelectPDFService softService)
     {
         _softService = softService;
     }
@@ -17,17 +15,8 @@ public class SautinSoftController : Controller
     {
         return View();
     }
-
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
-
-
-    [HttpPost("UploadSautin"), DisableRequestSizeLimit, RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue)]
-    public IActionResult UploadSautin(IFormFile pdfFile, string newFileName, IFormFile certificateFile, string certPassword, IFormFile signatureFile)
+    [HttpPost("UploadSelectPDF"), DisableRequestSizeLimit, RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue)]
+    public IActionResult UploadSelectPDF(IFormFile pdfFile, string newFileName, IFormFile certificateFile, string certPassword, IFormFile signatureFile)
     {
         if (pdfFile != null && pdfFile.Length > 0 && !string.IsNullOrEmpty(newFileName) && newFileName.Length > 0 && certificateFile != null && certificateFile.Length > 0 && !string.IsNullOrEmpty(certPassword) && certPassword.Length > 0 && pdfFile != null && signatureFile.Length > 0)
         {
@@ -54,7 +43,7 @@ public class SautinSoftController : Controller
                     }
 
                     ViewBag.Message = "File uploaded successfully.";
-                    _softService.DigitalSignature(pdfFilePath, signatureFilePath, @$"C:\Users\ruben\source\repos\Gradproef\PDFSigner\PDFSigner\OutputFiles\{pdfFileName}", certFilePath, "pxl");
+                    _softService.SignPDF(pdfFilePath, signatureFilePath, @$"C:\Users\ruben\source\repos\Gradproef\PDFSigner\PDFSigner\OutputFiles\{pdfFileName}", certFilePath, "pxl");
                 }
                 catch
                 {
@@ -92,8 +81,4 @@ public class SautinSoftController : Controller
     {
         return View();
     }
-
-
-
-
 }

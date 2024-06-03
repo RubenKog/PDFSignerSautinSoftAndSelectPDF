@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 builder.Services.AddScoped<ISautinSoftService, SautinSoftService>();
+builder.Services.AddScoped<ISelectPDFService, SelectPDFService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
