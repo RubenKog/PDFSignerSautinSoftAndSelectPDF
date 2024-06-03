@@ -54,7 +54,7 @@ public class SautinSoftController : Controller
                     }
 
                     ViewBag.Message = "File uploaded successfully.";
-                    _softService.DigitalSignature(pdfFilePath, signatureFilePath, @$"C:\Users\ruben\source\repos\Gradproef\PDFSigner\PDFSigner\OutputFiles\{pdfFileName}", certFilePath, "pxl");
+                    _softService.DigitalSignature(pdfFilePath, signatureFilePath, Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "OutputFiles", pdfFileName), certFilePath, certPassword);
                 }
                 catch
                 {

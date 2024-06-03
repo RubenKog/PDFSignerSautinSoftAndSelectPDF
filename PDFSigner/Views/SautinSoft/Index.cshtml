@@ -1,30 +1,39 @@
 ﻿@{
     ViewData["Title"] = "SautinSoft PDFSigning";
 }
-<form class="form-container" asp-controller="SautinSoft" asp-action="UploadSautin" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="file" class="control-label">Select PDF file:</label>
-        <input type="file" id="pdfFile" name="pdfFile" class="fileInput" />
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">SautinSoft PDF Signing</h3>
+        </div>
+        <div class="card-body">
+            <form asp-controller="SautinSoft" asp-action="UploadSautin" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="pdfFile" class="control-label">Select PDF file:</label>
+                    <input type="file" id="pdfFile" name="pdfFile" class="form-control-file" />
+                </div>
+                <div class="form-group">
+                    <label for="newFileName" class="control-label">Signed PDF name:</label>
+                    <input type="text" id="newFileName" name="newFileName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="certificateFile" class="control-label">Select PFX Certificate File:</label>
+                    <input type="file" id="certificateFile" name="certificateFile" class="form-control-file" />
+                </div>
+                <div class="form-group">
+                    <label for="certPassword" class="control-label">Certificate Password:</label>
+                    <input type="password" id="certPassword" name="certPassword" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="signatureFile" class="control-label">Select PNG Signature File:</label>
+                    <input type="file" id="signatureFile" name="signatureFile" class="form-control-file" />
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-info mt-3">@ViewBag.Message</div>
+            }
+        </div>
     </div>
-    <div class="form-group">
-        <label for="filename" class="control-label">Signed PDF name:</label>
-        <input type="text" id="newFileName" name="newFileName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="certificateFile" class="control-label">Select PFX Certificate File:</label>
-        <input type="file" id="certificateFile" name="certificateFile" class="fileInput" />
-    </div>
-    <div class="form-group">
-        <label for="certPassword" class="control-label">Certificate Password:</label>
-        <input type="password" id="certPassword" name="certPassword" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="signatureFile" class="control-label">Select PNG Signature File:</label>
-        <input type="file" id="signatureFile" name="signatureFile" class="fileInput" />
-    </div>
-    <button type="submit" class="uploadButton">Upload</button>
-</form>
-@if (!string.IsNullOrEmpty(ViewBag.Message))
-{
-    <p>@ViewBag.Message</p>
-}
+</div>

@@ -5,14 +5,14 @@ namespace PDFSigner.Services;
 public interface ISelectPDFService 
 {
 
-    public void SignPDF(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword);
+    public void DigitalSignature(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword);
 
 
 
 }
 public class SelectPDFService : ISelectPDFService
 {
-    public void  SignPDF(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword)
+    public void DigitalSignature(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword)
     {
         // create a new pdf document
         PdfDocument doc = new PdfDocument(pdfPath);

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="RequiredFiles\" />
+    <Folder Include="wwwroot\OutputFiles\" />
     <Folder Include="wwwroot\PdfFiles\" />
   </ItemGroup>
 
