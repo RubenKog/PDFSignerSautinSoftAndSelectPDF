@@ -3,13 +3,12 @@ using SelectPdf;
 
 namespace PDFSigner.Services;
 public interface ISelectPDFService 
-{
-
+{    
     public void DigitalSignature(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword);
-
-
-
 }
+
+//Based on example code from
+//https://selectpdf.com/docs/DigitalSignatures.htm
 public class SelectPDFService : ISelectPDFService
 {
     public void DigitalSignature(string pdfPath, string signaturePath, string resultPath, string certificatePath, string certificatePassword)
